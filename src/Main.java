@@ -25,7 +25,11 @@ public class Main {
 
 		customer.acquista(30);
 
-		User[] utenti = {driver, customer};
+
+		System.out.println(" ----------------------------------- POLIMORFISMO ------------------------------------------");
+
+
+		User[] utenti = {driver, customer}; // Array POLIMORFICO di User, chiunque sia uno User può essere inserito in questo array
 
 		for (User user : utenti) {
 			user.sayHello();
@@ -35,13 +39,13 @@ public class Main {
 //			utenti[i].sayHello();
 //		}
 
-		Consegnatore[] consegnatori = {driver, droneConsegne};
+		Consegnatore[] consegnatori = {driver, droneConsegne}; // Array POLIMORFICO di Consegnatore, chiunque sia un Consegnatore può essere inserito in questo array
 
 		for (Consegnatore consegnatore : consegnatori) {
 			consegnatore.consegna("1");
 		}
 
-		Acquirente[] acquirenti = {customer, azienda, driver};
+		Acquirente[] acquirenti = {customer, azienda, driver}; // Array POLIMORFICO di Acquirente, chiunque sia un Acquirente può essere inserito in questo array
 
 		for (Acquirente acquirente : acquirenti) {
 			// acquirente.getBudgetResiduo(); // Gli acquirenti hanno solo il metodo acquista, non hanno il metodo getBudgetResiduo()
@@ -58,9 +62,11 @@ public class Main {
 			}
 		}
 
-		doSomething(customer, 1000);
-		doSomething(azienda, 10000);
-		doSomething(driver, 2);
+		// METODI POLIMORFICI
+
+		doSomething(customer, 1000); // Il metodo doSomething vuole come parametro un Acquirente. customer è un'Acquirente? Si, allora è compatibile
+		doSomething(azienda, 10000); // Il metodo doSomething vuole come parametro un Acquirente. azienda è un'Acquirente? Si, allora è compatibile
+		doSomething(driver, 2); // Il metodo doSomething vuole come parametro un Acquirente. driver è un'Acquirente? Si, allora è compatibile
 
 	}
 
