@@ -1,14 +1,16 @@
 import entities.*;
+import exceptions.RequiredValueMissingException;
+import exceptions.ValidationException;
 import interfaces.Acquirente;
 import interfaces.Consegnatore;
 
 public class Main {
 	public static void main(String[] args) {
 
-		Customer customer = new Customer("Giovanni", "Storti", "giova@gmail.com", "1234", 20, "2012131546456");
+		Customer customer = new Customer("Giovanni", "Storti", "giova@gmail.com", "12345678", 20, "2012131546456");
 		customer.sayHello();
 
-		Driver driver = new Driver("Giacomo", "Poretti", "giacomo@gmail.com", "1234", 32, "1i2j3o12j3");
+		Driver driver = new Driver("Giacomo", "Poretti", "giacomo@gmail.com", "12345678", 32, "1i2j3o12j3");
 		driver.sayHello(); // è ereditato da entities.User
 
 
@@ -67,6 +69,20 @@ public class Main {
 		doSomething(customer, 1000); // Il metodo doSomething vuole come parametro un Acquirente. customer è un'Acquirente? Si, allora è compatibile
 		doSomething(azienda, 10000); // Il metodo doSomething vuole come parametro un Acquirente. azienda è un'Acquirente? Si, allora è compatibile
 		doSomething(driver, 2); // Il metodo doSomething vuole come parametro un Acquirente. driver è un'Acquirente? Si, allora è compatibile
+
+
+		System.out.println("---------------------------------- EXCEPTIONS ------------------------------");
+
+		try {
+			driver.setEmail(" ");
+		} catch (ValidationException | ArrayIndexOutOfBoundsException ex) {
+			System.out.println(ex.getMessage());
+		} catch (RequiredValueMissingException ex) {
+			System.out.println("Inviata email a Donald J.Trump con il messaggio di errore");
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			ex.printStackTrace();
+		}
 
 	}
 
