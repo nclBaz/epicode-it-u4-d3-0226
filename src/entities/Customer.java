@@ -41,6 +41,6 @@ public class Customer extends User implements Acquirente {
 
 	@Override
 	public void acquista(double importo) {
-		
+		System.out.println("Il customer ha speso: " + importo);
 	}
 }

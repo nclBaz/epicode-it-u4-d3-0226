@@ -11,6 +11,10 @@ public class Azienda implements Acquirente {
 		this.budgetResiduo = budgetResiduo;
 	}
 
+	public double getBudgetResiduo() {
+		return budgetResiduo;
+	}
+
 	@Override
 	public String toString() {
 		return "Azienda{" +
