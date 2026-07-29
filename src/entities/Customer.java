@@ -1,6 +1,8 @@
 package entities;
 
-public class Customer extends User {
+import interfaces.Acquirente;
+
+public class Customer extends User implements Acquirente {
 	private String creditCardNumber;
 
 	public Customer(String name, String surname, String email, String password, int age, String creditCardNumber) {
@@ -35,5 +37,10 @@ public class Customer extends User {
 		return "entities.Customer{" +
 				"creditCardNumber='" + creditCardNumber + '\'' +
 				"} " + super.toString();
+	}
+
+	@Override
+	public void acquista(double importo) {
+		
 	}
 }

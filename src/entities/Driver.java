@@ -1,6 +1,9 @@
 package entities;
 
-public class Driver extends User {
+import interfaces.Acquirente;
+import interfaces.Consegnatore;
+
+public class Driver extends User implements Consegnatore, Acquirente {
 	private boolean isAvailable;
 	private String licenseNumber;
 
@@ -36,5 +39,21 @@ public class Driver extends User {
 				"isAvailable=" + isAvailable +
 				", licenseNumber='" + licenseNumber + '\'' +
 				"} " + super.toString();
+	}
+
+	@Override
+	public void consegna(String idOrdine) {
+		if (isAvailable) {
+			isAvailable = false;
+			System.out.println(this.getNomeCompleto() + " sta consegnando l'ordine " + idOrdine);
+		} else {
+			System.out.println(this.getNomeCompleto() + " non è disponibile per la consegna");
+		}
+
+	}
+
+	@Override
+	public void acquista(double importo) {
+		System.out.println("Il driver " + this.getNomeCompleto() + " ha appena speso " + importo + "€");
 	}
 }
